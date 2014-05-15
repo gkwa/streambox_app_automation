@@ -1,7 +1,6 @@
-Scratch Pad(Extra code)
+#import "Credentials.js"
 
-var inValidUserName = "Stream1234";
-var inValidPassword = "demo123";
+Scratch Pad(Extra code)
 var alert = "Incorrect login/password";
 
 //Calling the passUser Function for the inValid password
