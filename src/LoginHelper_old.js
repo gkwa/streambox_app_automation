@@ -1,5 +1,4 @@
-#
-import "Main.js"
+#import "Main.js"
 
 function passUser(userName, password) {
     UIALogger.logMessage("Entering the Username");
