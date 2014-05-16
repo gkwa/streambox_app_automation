@@ -4,6 +4,8 @@ MAKEFLAGS += --warn-undefined-variables
 
 UDID1 = eba88a92c6a33123b42450da634b243244ae282b
 
+# https://github.com/einars/js-beautify
+JSBEAUTIFY = js-beautify
 basename=SBX-iPhone-instruments-v$(VERSION)
 zipfile=$(basename).zip
 
@@ -31,7 +33,7 @@ dropbox: $(zipfile)
 
 pretty:
 	cd src && perl -i.Makefile.tmp -pe 's{(^#import.*)}{//HIDE_FROM_BEAUTIFIER$$1}' *.js *.js.template
-	cd src && ls -1 *.js *.js.template | while read f; do js-beautify $(JS_BEAUTIFY_PARAMS) $$f; done;
+	cd src && ls -1 *.js *.js.template | while read f; do $(JSBEAUTIFY) $(JS_BEAUTIFY_PARAMS) $$f; done;
 	cd src && perl -i.Makefile.tmp -pe 's{//HIDE_FROM_BEAUTIFIER#import}{#import}' *.js *.js.template
 	cd src && rm -f *.Makefile.tmp
 
