@@ -6,6 +6,7 @@ UDID1 = eba88a92c6a33123b42450da634b243244ae282b
 
 # https://github.com/einars/js-beautify
 JSBEAUTIFY = js-beautify
+INSTRUMENTS = instruments
 basename=SBX-iPhone-instruments-v$(VERSION)
 zipfile=$(basename).zip
 
