@@ -40,6 +40,7 @@ pretty:
 clean:
 	rm -f .DS_Store
 	rm -f $(zipfile)
+	rm -rf instrumentscli[0-9]*.trace
 
 .PHONY: dropbox
 .PHONY: clean
