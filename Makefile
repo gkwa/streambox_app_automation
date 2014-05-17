@@ -5,9 +5,7 @@ else
 $(error first manually create udid.mk from sample udid.mk.template)
 endif
 
-ifneq (,$(wildcard src/Credentials.js))
-include udid.mk
-else
+ifeq (,$(wildcard src/Credentials.js))
 $(error you need to first manually create src/Credentials.js from src/Credentials.js.template)
 endif
 
