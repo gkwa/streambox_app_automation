@@ -2,7 +2,10 @@ VERSION=0.0.1
 
 MAKEFLAGS += --warn-undefined-variables
 
+# Streambox iPhone5
 UDID1 = eba88a92c6a33123b42450da634b243244ae282b
+# Taylor's iPhone5
+UDID1 = 43f6bbb40edd71ec7d63490e37fd504c09b0f223
 
 # https://github.com/einars/js-beautify
 JSBEAUTIFY = js-beautify
