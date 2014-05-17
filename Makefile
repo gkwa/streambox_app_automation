@@ -13,16 +13,25 @@ FILES = src/*
 FILES += Makefile
 
 JS_BEAUTIFY_PARAMS =
-JS_BEAUTIFY_PARAMS += --replace
-JS_BEAUTIFY_PARAMS += --quiet
-
 INS_PARAMS =
+QUIET_INSTRUMENTS =
+ifneq ($(findstring $(MAKEFLAGS),s),s)
+ifdef V
+	INS_PARAMS += -v
+else
+	QUIET_INSTRUMENTS = @echo '   ' INSTRUMENTS $@;
+	JS_BEAUTIFY_PARAMS += --quiet
+endif
+endif
+
+JS_BEAUTIFY_PARAMS += --replace
+
 INS_PARAMS += -w $(UDID1)
 INS_PARAMS += -t $(CURDIR)/MyTemplate.tracetemplate
 INS_PARAMS += meproiphone
 
 test1:
-	instruments $(INS_PARAMS)
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS)
 
 zip: $(zipfile)
 $(zipfile): $(FILES)
