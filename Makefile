@@ -5,6 +5,12 @@ else
 $(error first manually create udid.mk from sample udid.mk.template)
 endif
 
+ifneq (,$(wildcard src/Credentials.js))
+include udid.mk
+else
+$(error you need to first manually create src/Credentials.js from src/Credentials.js.template)
+endif
+
 VERSION=0.0.1
 
 MAKEFLAGS += --warn-undefined-variables
