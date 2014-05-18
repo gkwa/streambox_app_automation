@@ -21,6 +21,7 @@ zipfile=$(basename).zip
 
 FILES = src/*
 FILES += Makefile
+FILES += *.tracetemplate
 
 JS_BEAUTIFY_PARAMS =
 INS_PARAMS =
