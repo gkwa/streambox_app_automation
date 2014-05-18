@@ -43,9 +43,11 @@ INS_PARAMS += meproiphone
 test1:
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS)
 
+zip: ZIP_EXCLUDE =
+zip: ZIP_EXCLUDE += --exclude src/Credentials.js
 zip: $(zipfile)
 $(zipfile): $(FILES)
-	zip --exclude src/Credentials.js -9r $@ $(FILES)
+	zip $(ZIP_EXCLUDE) -9r $@ $(FILES)
 
 dropbox: $(zipfile)
 	[[ -d ~/Dropbox/Public/sb/ephemeral ]] && cp $(zipfile) ~/Dropbox/Public/sb/ephemeral
