@@ -1,8 +1,8 @@
-# if udid.mk file exists, then load UDID variable from it
-ifneq (,$(wildcard udid.mk))
-include udid.mk
+# if settings.mk file exists, then load UDID variable from it
+ifneq (,$(wildcard settings.mk))
+include settings.mk
 else
-$(error first manually create udid.mk from sample udid.mk.template)
+$(error first manually create settings.mk from sample settings.mk.template)
 endif
 
 ifeq (,$(wildcard src/Credentials.js))
@@ -21,15 +21,18 @@ zipfile=$(basename).zip
 
 FILES = src/*
 FILES += Makefile
-FILES += *.tracetemplate
+FILES += settings.mk.template
+FILES += README.md
 
 JS_BEAUTIFY_PARAMS =
 INS_PARAMS =
+QUIET_MKDIR =
 QUIET_INSTRUMENTS =
 ifneq ($(findstring $(MAKEFLAGS),s),s)
 ifdef V
 	INS_PARAMS += -v
 else
+	QUIET_MKDIR = @
 	QUIET_INSTRUMENTS = @echo '   ' INSTRUMENTS $@;
 	JS_BEAUTIFY_PARAMS += --quiet
 endif
@@ -38,15 +41,18 @@ endif
 JS_BEAUTIFY_PARAMS += --replace
 
 INS_PARAMS += -w $(UDID1)
-INS_PARAMS += -t $(CURDIR)/MyTemplate.tracetemplate
-INS_PARAMS += meproiphone
+INS_PARAMS += -t /Applications/Xcode.app/Contents/Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/Automation.tracetemplate
+INS_PARAMS += -D output
+INS_PARAMS += $(STREAMBOX_APP_ABSPATH)
+INS_PARAMS += -e UIARESULTSPATH output.run
 
 test1:
-	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS)
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
 
 zip: ZIP_EXCLUDE =
 zip: ZIP_EXCLUDE += --exclude src/Credentials.js
-zip: ZIP_EXCLUDE += --exclude udid.mk
+zip: ZIP_EXCLUDE += --exclude settings.mk
 zip: $(zipfile)
 $(zipfile): $(FILES)
 	zip $(ZIP_EXCLUDE) -9r $@ $(FILES)
@@ -63,7 +69,8 @@ pretty:
 clean:
 	rm -f .DS_Store
 	rm -f $(zipfile)
-	rm -rf instrumentscli[0-9]*.trace
+	rm -rf output.trace
+	rm -rf output.run
 
 .PHONY: dropbox
 .PHONY: clean

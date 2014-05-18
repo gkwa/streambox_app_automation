@@ -1,2 +1,4 @@
 /src/Credentials.js
-/udid.mk
+/settings.mk
+/output.trace/
+/output.run/
