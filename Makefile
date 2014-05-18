@@ -19,11 +19,6 @@ INSTRUMENTS = instruments
 basename=SBX-iPhone-instruments-v$(VERSION)
 zipfile=$(basename).zip
 
-FILES = src/*
-FILES += Makefile
-FILES += settings.mk.template
-FILES += README.md
-
 JS_BEAUTIFY_PARAMS =
 INS_PARAMS =
 QUIET_MKDIR =
@@ -50,12 +45,9 @@ test1:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
 
-zip: ZIP_EXCLUDE =
-zip: ZIP_EXCLUDE += --exclude src/Credentials.js
-zip: ZIP_EXCLUDE += --exclude settings.mk
 zip: $(zipfile)
-$(zipfile): $(FILES)
-	zip $(ZIP_EXCLUDE) -9r $@ $(FILES)
+$(zipfile):
+	git archive --format zip --output $(zipfile) master
 
 dropbox: $(zipfile)
 	[[ -d ~/Dropbox/Public/sb/ephemeral ]] && cp $(zipfile) ~/Dropbox/Public/sb/ephemeral
