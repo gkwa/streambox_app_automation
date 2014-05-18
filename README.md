@@ -4,6 +4,9 @@ streambox_app_automation
 Automate testing the Streambox iPhone App using Instruments
 
 
+Getting started
+===============
+
 Common problems and solutions
 =============================
 
@@ -26,3 +29,15 @@ iPad Retina (64-bit) - Simulator - iOS 7.1
 make: *** [test1] Error 255
 [demo@demos-MacBook-Pro-2:~/pdgh/streambox_app_automation(master)]$
 ```
+
+'make pretty' gives error
+-------------------------
+Is js-beautifier installed?
+```sh
+sudo easy_install pip
+sudo pip install --upgrade six
+sudo pip install --upgrade jsbeautifier
+npm -g install js-beautify
+npm install js-beautify
+```
+from https://github.com/einars/js-beautify
