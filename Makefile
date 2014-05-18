@@ -45,6 +45,7 @@ test1:
 
 zip: ZIP_EXCLUDE =
 zip: ZIP_EXCLUDE += --exclude src/Credentials.js
+zip: ZIP_EXCLUDE += --exclude udid.mk
 zip: $(zipfile)
 $(zipfile): $(FILES)
 	zip $(ZIP_EXCLUDE) -9r $@ $(FILES)
