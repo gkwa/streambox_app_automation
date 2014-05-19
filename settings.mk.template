@@ -5,7 +5,7 @@
 
 
 
-# Absolute path to encoder app
-# STREAMBOX_APP_ABSPATH = /Users/demo/Downloads/iPhone/3.0.0_beta0/meproiphone.app
+# name of app to test
+# APP = meproiphone.app
 
-# STREAMBOX_APP_ABSPATH =
+# APP =

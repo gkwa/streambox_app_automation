@@ -38,7 +38,7 @@ JS_BEAUTIFY_PARAMS += --replace
 INS_PARAMS += -w $(UDID1)
 INS_PARAMS += -t /Applications/Xcode.app/Contents/Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/Automation.tracetemplate
 INS_PARAMS += -D output
-INS_PARAMS += $(STREAMBOX_APP_ABSPATH)
+INS_PARAMS += $(APP)
 INS_PARAMS += -e UIARESULTSPATH output.run
 
 test1:
