@@ -1,32 +1,53 @@
+# if settings.mk file exists, then load UDID variable from it
+ifneq (,$(wildcard settings.mk))
+include settings.mk
+else
+$(error first manually create settings.mk from sample settings.mk.template)
+endif
+
+ifeq (,$(wildcard src/Credentials.js))
+$(error you need to first manually create src/Credentials.js from src/Credentials.js.template)
+endif
+
 VERSION=0.0.1
 
 MAKEFLAGS += --warn-undefined-variables
 
-UDID1 = eba88a92c6a33123b42450da634b243244ae282b
-
 # https://github.com/einars/js-beautify
 JSBEAUTIFY = js-beautify
+INSTRUMENTS = instruments
 basename=SBX-iPhone-instruments-v$(VERSION)
 zipfile=$(basename).zip
 
-FILES = src/*
-FILES += Makefile
-
 JS_BEAUTIFY_PARAMS =
-JS_BEAUTIFY_PARAMS += --replace
-JS_BEAUTIFY_PARAMS += --quiet
-
 INS_PARAMS =
+QUIET_MKDIR =
+QUIET_INSTRUMENTS =
+ifneq ($(findstring $(MAKEFLAGS),s),s)
+ifdef V
+	INS_PARAMS += -v
+else
+	QUIET_MKDIR = @
+	QUIET_INSTRUMENTS = @echo '   ' INSTRUMENTS $@;
+	JS_BEAUTIFY_PARAMS += --quiet
+endif
+endif
+
+JS_BEAUTIFY_PARAMS += --replace
+
 INS_PARAMS += -w $(UDID1)
-INS_PARAMS += -t $(CURDIR)/MyTemplate.tracetemplate
-INS_PARAMS += meproiphone
+INS_PARAMS += -t /Applications/Xcode.app/Contents/Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/Automation.tracetemplate
+INS_PARAMS += -D output
+INS_PARAMS += $(APP)
+INS_PARAMS += -e UIARESULTSPATH output.run
 
 test1:
-	instruments $(INS_PARAMS)
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
 
 zip: $(zipfile)
-$(zipfile): $(FILES)
-	zip --exclude src/Credentials.js -9r $@ $(FILES)
+$(zipfile):
+	git archive --format zip --output $(zipfile) master
 
 dropbox: $(zipfile)
 	[[ -d ~/Dropbox/Public/sb/ephemeral ]] && cp $(zipfile) ~/Dropbox/Public/sb/ephemeral
@@ -40,6 +61,8 @@ pretty:
 clean:
 	rm -f .DS_Store
 	rm -f $(zipfile)
+	rm -rf output.trace
+	rm -rf output.run
 
 .PHONY: dropbox
 .PHONY: clean
