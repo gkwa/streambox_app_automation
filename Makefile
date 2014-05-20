@@ -43,7 +43,7 @@ INS_PARAMS += -e UIARESULTSPATH output.run
 
 all: testfilehelper
 all: testmain
-all: t00001-add-delete-deecoders
+all: testadd-delete-decoders
 
 testfilehelper:
 	$(QUIET_MKDIR)mkdir -p output.run
@@ -53,9 +53,9 @@ testmain:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
 
-t00001-add-delete-decoders:
+testadd-delete-decoders:
 	$(QUIET_MKDIR)mkdir -p output.run
-	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/t00001-add-delete-decoders.js
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/testadd-delete-decoders.js
 
 zip: $(zipfile)
 $(zipfile):
