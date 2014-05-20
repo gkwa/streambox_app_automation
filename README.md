@@ -41,3 +41,27 @@ npm -g install js-beautify
 npm install js-beautify
 ```
 from https://github.com/einars/js-beautify
+
+
+I get error: 2014-05-19 23:07:13.199 instruments[30608:1207] Failed to start Instruments daemon for 'iOS' on 'iPhone (v7.1.1)' (The service is invalid.)
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+```sh
+[demo@demos-MacBook-Pro-2:~/pdgh/streambox_app_automation(move-tests-to-separte-files)]$ make test1
+    INSTRUMENTS test1
+2014-05-19 23:07:13.199 instruments[30608:1207] Failed to start Instruments daemon for 'iOS' on 'iPhone (v7.1.1)' (The service is invalid.)
+2014-05-19 23:07:13.328 instruments[30608:2003] Failed to start Instruments daemon for 'iOS' on 'iPhone (v7.1.1)' (The service is invalid.)
+make: *** [test1] Error 253
+[demo@demos-MacBook-Pro-2:~/pdgh/streambox_app_automation(move-tests-to-separte-files)]$ make test1
+    INSTRUMENTS test1
+2014-05-19 23:08:01.473 instruments[30660:1207] Permission to debug com.streambox.iphapp was denied.  The app must be signed with a development identity (e.g. iOS Developer).
+Instruments Trace Error : Error Starting Recording
+make: *** [test1] Error 253
+[demo@demos-MacBook-Pro-2:~/pdgh/streambox_app_automation(move-tests-to-separte-files)]$
+```
+When I got "Failed to start Instruments daemon" message, I opened Xcode, Window, Organizer and did nothing else.
+
+Next, I  ran make test1 again.  This time I got message
+```
+2014-05-19 23:08:01.473 instruments[30660:1207] Permission to debug com.streambox.iphapp was denied.  The app must be signed with a development identity (e.g. iOS Developer).
+```
+which reminds me: I just now downloaded the newest Streambox App v3.0.14 from Apple store and I guess the Apple store versions are signed differently than by development builds.
