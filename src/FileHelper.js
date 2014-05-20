@@ -1,53 +1,86 @@
-function testingTheFile() {
-    target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
-    if (target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].checkIsValid()) {
-        target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].tap();
-        target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["043014-115051.actl3, 7659"].tap();
-        target.frontMostApp().toolbar().buttons()["Upload(1)"].tap();
+#import "LoginHelper.js"
 
-		============================================================================================
-		
-		target.frontMostApp().mainWindow().buttons()["Presets Button   Neutral"].tap();
-		target.frontMostApp().mainWindow().buttons()["Preset   Record File"].tap();
-		target.frontMostApp().mainWindow().buttons()["Stop   Record File x"].tap();
-		target.frontMostApp().windows()[0].buttons()["Stop   Record File x"].tap();
-		// Alert detected. Expressions for handling alerts should be moved into the UIATarget.onAlert function definition.
-		target.tap({x:303.00, y:185.00});
-		// Alert detected. Expressions for handling alerts should be moved into the UIATarget.onAlert function definition.
-		target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
-		target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].tap();
-		target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["Files"].tap();
-		target.frontMostApp().mainWindow().tableViews()[1].cells()["051614-142644.actl3, 376653"].tap();
-		target.frontMostApp().toolbar().buttons()["Upload(1)"].tap();
-		// Alert detected. Expressions for handling alerts should be moved into the UIATarget.onAlert function definition.
-		target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["Uploads"].tap();
-		target.frontMostApp().mainWindow().tableViews()[1].cells()["051614-142644.actl3, 148800/376653"].tap();
-		target.frontMostApp().toolbar().buttons()["Delete(1)"].tap();
-		target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["History"].tap();
-		
-		
-		
-		
-		
-		=================================================================================
-		
-		
-        target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["Uploads"].tap();
-        if (!(target.frontMostApp().mainWindow().tableViews()[1].cells()["043014-115051.actl3, 7659/7659"].checkIsValid())) {
-            UIALogger.logPass("Updated successfully");
-        } else {
-            UIALogger.logFail("Updated Unsuccesfully");
-        }
-        target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["History"].tap();
-        if (!(target.frontMostApp().mainWindow().tableViews()[1].cells()["043014-115051.actl3, SUCCESS"].checkIsValid())) {
-            target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["043014-115051.actl3, SUCCESS"].buttons()["Checkmark Inactive"].tap();
-            target.frontMostApp().toolbar().buttons()["Delete(1)"].tap();
-            UIALogger.logPass("Deleted successfully");
-        } else {
-            UIALogger.logFail("Cannot delete");
-        }
-        return true;
-    } else {
-        return false;
+var target = UIATarget.localTarget();
+var app = target.frontMostApp();
+var window = app.mainWindow();
+var validUserName = "deepti2";
+//var validUsername = get_username_from ~/.streambox_test.xml
+var validPassword = "demo";
+var result2 = testLoginWithValidCredentialsSuccess(validUserName,validPassword)
+
+
+
+function testingTheFile(){
+    
+target.frontMostApp().mainWindow().buttons()["Presets Button   Neutral"].tap();
+target.frontMostApp().mainWindow().buttons()["Preset   Record File"].tap();
+target.frontMostApp().mainWindow().buttons()["Stop   Record File x"].tap();
+UIATarget.localTarget().delay(10);
+
+
+target.frontMostApp().windows()[0].buttons()["Stop   Record File x"].tap();
+target.tap({x:304.50, y:184.50});
+
+target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
+if(target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].checkIsValid()){
+    
+target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].tap();
+//target.frontMostApp().mainWindow().tableViews()[0].cells()[0].buttons()[0].tapWithOptions({tapOffset:{x:0.57, y:0.50}});
+if((target.frontMostApp().mainWindow().tableViews()[1].cells()[0].checkIsValid())){
+    UIALogger.logPass("Updated successfully");
+    }else{
+    UIALogger.logFail("Updated Unsuccesfully");
     }
+
+target.frontMostApp().mainWindow().tableViews()[1].cells()[0].tap();
+target.frontMostApp().toolbar().buttons()["Upload(1)"].tap();
+target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["Uploads"].tap();
+target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["History"].tap();
+if((target.frontMostApp().mainWindow().tableViews()[1].cells()[0].checkIsValid())){
+    UIALogger.logPass("Updated successfully in History");
+    }else{
+    UIALogger.logFail("Updated Unsuccesfully in History");
+    }
+
+target.frontMostApp().mainWindow().tableViews()[1].cells()[0].tap();
+
+target.frontMostApp().toolbar().buttons()["Delete(1)"].tap();
+UIALogger.logPass("Deleted successfully");
+return true;
+}else{
+    return false;
+    }
+
 }
+
+
+var t = testingTheFile();
+UIALogger.logMessage(t);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
