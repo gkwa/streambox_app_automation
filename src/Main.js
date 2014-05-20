@@ -284,35 +284,5 @@ target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
 target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Logout"].tap();
 
 //=============================================================
-//Adding and deleting the decodes
-testLoginWithValidCredentialsSuccess(validUserName, validPassword);
-UIALogger.logMessage("Creating the file, deleting and uploading");
-
-var result23 = testAddingTheDecodersandDeletingIsTrue();
-
-if (result23 == true) {
-    UIALogger.logPass("Test Passed Succesfully");
-} else {
-    UIALogger.logFail("Test Failed");
-}
-UIATarget.localTarget().delay(2);
-target.frontMostApp().navigationBar().tapWithOptions({
-    tapOffset: {
-        x: 0.07,
-        y: 0.09
-    }
-});
-target.frontMostApp().navigationBar().tapWithOptions({
-    tapOffset: {
-        x: 0.07,
-        y: 0.09
-    }
-});
-
-//target.frontMostApp().navigationBar().leftButton().tap();
-
-target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
-target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Logout"].tap();
-//=============================================================
 
 //
