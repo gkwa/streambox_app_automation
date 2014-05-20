@@ -41,6 +41,9 @@ INS_PARAMS += -D output
 INS_PARAMS += $(APP)
 INS_PARAMS += -e UIARESULTSPATH output.run
 
+all: testfilehelper
+all: testmain
+
 testfilehelper:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/FileHelper.js
