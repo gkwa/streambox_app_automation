@@ -1,7 +1,3 @@
-var target = UIATarget.localTarget();
-var app = target.frontMostApp();
-var window = app.mainWindow();
-
 function testLoginWithValidCredentialsSuccess(userName, password) {
 
     UIALogger.logMessage("Entering the Username");
