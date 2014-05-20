@@ -1,11 +1,9 @@
 #import "LoginHelper.js"
+#import "Credentials.js"
 
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();
 var window = app.mainWindow();
-var validUserName = "deepti2";
-//var validUsername = get_username_from ~/.streambox_test.xml
-var validPassword = "demo";
 var result2 = testLoginWithValidCredentialsSuccess(validUserName,validPassword)
 
 
