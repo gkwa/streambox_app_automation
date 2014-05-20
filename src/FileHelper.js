@@ -23,8 +23,10 @@ function testingTheFile() {
     });
 
     target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
-    if (target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].checkIsValid()) {
 
+    if (!target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].checkIsValid()) {
+        return false;
+    } else {
         target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].tap();
         //target.frontMostApp().mainWindow().tableViews()[0].cells()[0].buttons()[0].tapWithOptions({tapOffset:{x:0.57, y:0.50}});
         if ((target.frontMostApp().mainWindow().tableViews()[1].cells()[0].checkIsValid())) {
@@ -48,8 +50,6 @@ function testingTheFile() {
         target.frontMostApp().toolbar().buttons()["Delete(1)"].tap();
         UIALogger.logPass("Deleted successfully");
         return true;
-    } else {
-        return false;
     }
 
 }
