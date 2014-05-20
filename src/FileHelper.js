@@ -23,7 +23,6 @@ function testingTheFile() {
     });
 
     target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
-
     if (!target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Files"].checkIsValid()) {
         return false;
     } else {
@@ -51,7 +50,6 @@ function testingTheFile() {
         UIALogger.logPass("Deleted successfully");
         return true;
     }
-
 }
 
 

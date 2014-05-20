@@ -34,7 +34,6 @@ function testingTheFile() {
     target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["Uploads"].tap();
     target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["History"].tap();
 
-
     //============================================================================================
 
     target.frontMostApp().mainWindow().buttons()["Preset   Record File"].tap();
@@ -57,13 +56,7 @@ function testingTheFile() {
     target.frontMostApp().toolbar().buttons()["Delete(1)"].tap();
     target.frontMostApp().navigationBar().segmentedControls()[0].buttons()["History"].tap();
 
-
-
-
-
     //=================================================================================
-
-
 
 }
 
