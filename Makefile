@@ -41,7 +41,7 @@ INS_PARAMS += -D output
 INS_PARAMS += $(APP)
 INS_PARAMS += -e UIARESULTSPATH output.run
 
-test1:
+testmain:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
 
