@@ -16,8 +16,10 @@ MAKEFLAGS += --warn-undefined-variables
 # https://github.com/einars/js-beautify
 JSBEAUTIFY = js-beautify
 INSTRUMENTS = instruments
-basename=SBX-iPhone-instruments-v$(VERSION)
+branch_name := $(shell sh -c 'git rev-parse --abbrev-ref HEAD')
+basename=SBX_iPhone_instruments-$(VERSION)-$(branch_name)
 zipfile=$(basename).zip
+basename=SBX_iPhone_instruments-v$(VERSION)
 
 JS_BEAUTIFY_PARAMS =
 INS_PARAMS =
