@@ -19,7 +19,6 @@ INSTRUMENTS = instruments
 branch_name := $(shell sh -c 'git rev-parse --abbrev-ref HEAD')
 basename=SBX_iPhone_instruments-$(VERSION)-$(branch_name)
 zipfile=$(basename).zip
-basename=SBX_iPhone_instruments-v$(VERSION)
 
 JS_BEAUTIFY_PARAMS =
 INS_PARAMS =
