@@ -1,5 +1,7 @@
-# if settings.mk file exists, then load UDID variable from it
+ifneq (zip,$(findstring $(MAKECMDGOALS), zip))
+ifneq (clean,$(MAKECMDGOALS))
 ifneq (,$(wildcard settings.mk))
+# if settings.mk file exists, then load UDID variable from it
 include settings.mk
 else
 $(error first manually create settings.mk from sample settings.mk.template, i.e. cp settings.mk.template settings.mk, then manually edit settings.mk)
@@ -7,6 +9,8 @@ endif
 
 ifeq (,$(wildcard src/Credentials.js))
 $(error you need to first manually create src/Credentials.js from src/Credentials.js.template, i.e. cp src/Credentials.js.template src/Credentials.js, then manually edit src/Credentials.js)
+endif
+endif
 endif
 
 VERSION=0.0.1
