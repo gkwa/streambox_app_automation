@@ -2,11 +2,11 @@
 ifneq (,$(wildcard settings.mk))
 include settings.mk
 else
-$(error first manually create settings.mk from sample settings.mk.template)
+$(error first manually create settings.mk from sample settings.mk.template, i.e. cp settings.mk.template settings.mk, then manually edit settings.mk)
 endif
 
 ifeq (,$(wildcard src/Credentials.js))
-$(error you need to first manually create src/Credentials.js from src/Credentials.js.template)
+$(error you need to first manually create src/Credentials.js from src/Credentials.js.template, i.e. cp src/Credentials.js.template src/Credentials.js, then manually edit src/Credentials.js)
 endif
 
 VERSION=0.0.1
