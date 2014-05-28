@@ -1,6 +1,7 @@
 #import "LoginHelper.js"
 #import "Credentials.js"
 
+
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();
 var window = app.mainWindow();
