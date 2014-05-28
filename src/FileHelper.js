@@ -6,8 +6,6 @@ var app = target.frontMostApp();
 var window = app.mainWindow();
 var result2 = testLoginWithValidCredentialsSuccess(validUserName, validPassword)
 
-
-
 function testingTheFile() {
 
     target.frontMostApp().mainWindow().buttons()["Presets Button   Neutral"].tap();
@@ -44,11 +42,20 @@ function testingTheFile() {
             UIALogger.logFail("Updated Unsuccesfully in History");
         }
 
-        target.frontMostApp().mainWindow().tableViews()[1].cells()[0].tap();
-
+        if((target.frontMostApp().mainWindow().tableViews()[1].cells()[0].checkIsValid())){
+		target.frontMostApp().mainWindow().tableViews()[1].cells()[0].tap();
         target.frontMostApp().toolbar().buttons()["Delete(1)"].tap();
         UIALogger.logPass("Deleted successfully");
-        return true;
+		target.frontMostApp().navigationBar().leftButton().tap();
+		target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Logout"].tap();
+        return true;}
+		else
+		{
+		UIALogger.logFail(" Could not Delete successfully");
+		target.frontMostApp().navigationBar().leftButton().tap();
+		target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Logout"].tap();
+        return true
+			}
     }
 }
 
