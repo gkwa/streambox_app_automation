@@ -7,5 +7,4 @@
 
 # name of app to test
 # APP = meproiphone.app
-
-# APP =
+APP = meproiphone.app

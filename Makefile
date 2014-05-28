@@ -1,12 +1,16 @@
-# if settings.mk file exists, then load UDID variable from it
+ifneq (zip,$(findstring $(MAKECMDGOALS), zip))
+ifneq (clean,$(MAKECMDGOALS))
 ifneq (,$(wildcard settings.mk))
+# if settings.mk file exists, then load UDID variable from it
 include settings.mk
 else
-$(error first manually create settings.mk from sample settings.mk.template)
+$(error first manually create settings.mk from sample settings.mk.template, i.e. cp settings.mk.template settings.mk, then manually edit settings.mk)
 endif
 
 ifeq (,$(wildcard src/Credentials.js))
-$(error you need to first manually create src/Credentials.js from src/Credentials.js.template)
+$(error you need to first manually create src/Credentials.js from src/Credentials.js.template, i.e. cp src/Credentials.js.template src/Credentials.js, then manually edit src/Credentials.js)
+endif
+endif
 endif
 
 VERSION=0.0.1
@@ -16,7 +20,8 @@ MAKEFLAGS += --warn-undefined-variables
 # https://github.com/einars/js-beautify
 JSBEAUTIFY = js-beautify
 INSTRUMENTS = instruments
-basename=SBX-iPhone-instruments-v$(VERSION)
+branch_name := $(shell sh -c 'git rev-parse --abbrev-ref HEAD')
+basename=SBX_iPhone_instruments-$(VERSION)-$(branch_name)
 zipfile=$(basename).zip
 
 JS_BEAUTIFY_PARAMS =
@@ -41,9 +46,21 @@ INS_PARAMS += -D output
 INS_PARAMS += $(APP)
 INS_PARAMS += -e UIARESULTSPATH output.run
 
-test1:
+all: testfilehelper
+all: testmain
+all: testadd-delete-decoders
+
+testfilehelper:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/FileHelper.js
+
+testmain:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
+
+testadd-delete-decoders:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/testadd-delete-decoders.js
 
 zip: $(zipfile)
 $(zipfile):
