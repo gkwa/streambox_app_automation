@@ -83,6 +83,7 @@ pretty:
 	cd src && ls -1 *.js *.js.template | while read f; do $(JSBEAUTIFY) $(JS_BEAUTIFY_PARAMS) $$f; done;
 	cd src && perl -i.Makefile.tmp -pe 's{//HIDE_FROM_BEAUTIFIER#import}{#import}' *.js *.js.template
 	cd src && rm -f *.Makefile.tmp
+	doctoc . >/dev/null
 
 clean:
 	rm -f .DS_Store
