@@ -49,6 +49,7 @@ INS_PARAMS += -e UIARESULTSPATH output.run
 all: testfilehelper
 all: testmain
 all: testadd-delete-decoders
+all: test-stream-for-period
 
 testfilehelper:
 	$(QUIET_MKDIR)mkdir -p output.run
@@ -65,6 +66,10 @@ test-ifb:
 testadd-delete-decoders:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/testadd-delete-decoders.js
+
+test-stream-for-period:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/test-stream-for-period.js
 
 zip: $(zipfile)
 $(zipfile):
