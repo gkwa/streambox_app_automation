@@ -7,7 +7,15 @@ var window = app.mainWindow();
 var result2 = testLoginWithValidCredentialsSuccess(validUserName, validPassword)
 
 target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
-target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["IFB"].tap();
+var cells = target.frontMostApp().mainWindow().tableViews()["Empty list"].cells();
+var cellIFB = null;
+for (var i = cells.length - 1; i >= 0; i--) {
+    if (cells[i].name().substr(0, 3) == "IFB") {
+        cellIFB = cells[i]
+        break;
+    }
+}
+cellIFB.tap();
 target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Name"].tap();
 target.frontMostApp().keyboard().typeString("hh\n");
 target.frontMostApp().navigationBar().rightButton().tap();
