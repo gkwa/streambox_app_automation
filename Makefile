@@ -49,6 +49,7 @@ INS_PARAMS += -e UIARESULTSPATH output.run
 all: testfilehelper
 all: testmain
 all: testadd-delete-decoders
+all: test-stream-for-period
 
 testfilehelper:
 	$(QUIET_MKDIR)mkdir -p output.run
@@ -58,9 +59,17 @@ testmain:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/Main.js
 
+test-ifb:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/IFBHelper.js
+
 testadd-delete-decoders:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/testadd-delete-decoders.js
+
+test-stream-for-period:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/test-stream-for-period.js
 
 zip: $(zipfile)
 $(zipfile):
@@ -74,6 +83,7 @@ pretty:
 	cd src && ls -1 *.js *.js.template | while read f; do $(JSBEAUTIFY) $(JS_BEAUTIFY_PARAMS) $$f; done;
 	cd src && perl -i.Makefile.tmp -pe 's{//HIDE_FROM_BEAUTIFIER#import}{#import}' *.js *.js.template
 	cd src && rm -f *.Makefile.tmp
+	doctoc . >/dev/null
 
 clean:
 	rm -f .DS_Store
