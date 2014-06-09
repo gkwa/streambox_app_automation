@@ -1,6 +1,4 @@
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();
-//committing to test to verify the username is changed in GIT repo on commits
 var window = app.mainWindow();
-
 
