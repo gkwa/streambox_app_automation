@@ -17,6 +17,7 @@ function testAddingTheDecodersandDeletingIsTrue() {
         UIATarget.localTarget().delay(3);
 
 
+
         target.frontMostApp().mainWindow().tableViews()["Empty list"].tapWithOptions({
             tapOffset: {
                 x: 0.93,
