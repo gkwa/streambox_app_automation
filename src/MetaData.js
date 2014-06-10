@@ -14,12 +14,20 @@ target.frontMostApp().keyboard().typeString("jjj");
 target.frontMostApp().navigationBar().leftButton().tap();
 target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Group"].tap();
 target.frontMostApp().keyboard().typeString("uii");
-target.frontMostApp().navigationBar().tapWithOptions({tapOffset:{x:0.16, y:0.05}});
-target.frontMostApp().navigationBar().tapWithOptions({tapOffset:{x:0.14, y:0.08}});
+target.frontMostApp().navigationBar().tapWithOptions({
+    tapOffset: {
+        x: 0.16,
+        y: 0.05
+    }
+});
+target.frontMostApp().navigationBar().tapWithOptions({
+    tapOffset: {
+        x: 0.14,
+        y: 0.08
+    }
+});
 target.frontMostApp().navigationBar().leftButton().tap();
 target.frontMostApp().mainWindow().buttons()[20].tap();
 target.frontMostApp().mainWindow().buttons()[20].tap();
 target.frontMostApp().mainWindow().buttons()["Presets Button   Neutral"].tap();
 target.frontMostApp().mainWindow().buttons()["Preset   Custom"].tap();
-
-

@@ -1,5 +1,5 @@
 function testAddingThePresetsanaDeletingIsTrue() {
-    
+
     target.frontMostApp().mainWindow().buttons()["Settings Button   Neutral"].tap();
     if (!(target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Presets"].checkIsValid())) {
         return false;
