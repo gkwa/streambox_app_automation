@@ -10,6 +10,7 @@
   - [Error when running make](#error-when-running-make)
   - ['make pretty' gives error](#make-pretty-gives-error)
   - [I get error: Failed to start Instruments daemon for 'iOS' on 'iPhone (v7.1.1)' (The service is invalid.)](#i-get-error-failed-to-start-instruments-daemon-for-ios-on-iphone-v711-the-service-is-invalid)
+  - [How to handle error: 2014-08-14 18:23:34 +0000 Fail: Could not start script, target application is not frontmost.](#how-to-handle-error-2014-08-14-182334-0000-fail-could-not-start-script-target-application-is-not-frontmost)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -187,3 +188,13 @@ Next, I  ran make test1 again.  This time I got message
 2014-05-19 23:08:01.473 instruments[30660:1207] Permission to debug com.streambox.iphapp was denied.  The app must be signed with a development identity (e.g. iOS Developer).
 ```
 which reminds me: I just now downloaded the newest Streambox App v3.0.14 from Apple store and I guess the Apple store versions are signed differently than by development builds.
+
+How to handle error: 2014-08-14 18:23:34 +0000 Fail: Could not start script, target application is not frontmost.
+--------------------------------------------------------------------------------------------
+```sh
+[Administrator@intranet:~/pdev/streambox_app_automation(master)]$ make
+    INSTRUMENTS testfilehelper
+2014-08-14 18:23:34 +0000 Fail: Could not start script, target application is not frontmost.
+Instruments Trace Complete (Duration : 13.163401s; Output : /Users/Administrator/pdev/streambox_app_automation/output.trace)
+    INSTRUMENTS testmain
+```
