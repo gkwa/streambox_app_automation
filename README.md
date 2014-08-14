@@ -153,9 +153,7 @@ make: *** [test1] Error 255
 -------------------------
 Is js-beautifier installed? https://github.com/einars/js-beautify
 ```sh
-sudo easy_install pip
-sudo pip install --upgrade six
-sudo pip install --upgrade jsbeautifier
+brew install npm
 npm -g install js-beautify
 npm install js-beautify
 ```
