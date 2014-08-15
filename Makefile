@@ -50,6 +50,7 @@ all: testfilehelper
 all: testmain
 all: testadd-delete-decoders
 all: test-stream-for-period
+all: UIAutomationAddon-test
 all: test-whether-already-authenticated
 
 testfilehelper:
@@ -79,6 +80,13 @@ test-whether-already-authenticated:
 test-stream-for-period:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/test-stream-for-period.js
+
+UIAutomationAddon-test: src/UIAutomationAddon.js
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/UIAutomationAddon-test.js
+
+src/UIAutomationAddon.js:
+	curl --output $@ https://gist.githubusercontent.com/TaylorMonacelli/e1eca27f7c90c4fb29f8/raw/a7e52bd757766966e92a4985e76650cdff59dfe6/UIAutomationAddon.js
 
 zip: $(zipfile)
 $(zipfile):
