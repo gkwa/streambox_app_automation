@@ -50,7 +50,10 @@ all: testfilehelper
 all: testmain
 all: testadd-delete-decoders
 all: test-stream-for-period
+all: test-alert-when-please-wait-alert-pops-up
 all: UIAutomationAddon-test
+all: test1020
+all: test-alert-when-please-wait-alert-pops-up
 all: test-whether-already-authenticated
 
 testfilehelper:
@@ -72,10 +75,21 @@ testadd-delete-decoders:
 test-metadata:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/MetaData.js
+test-alert-when-please-wait-alert-pops-up:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/test-alert-when-please-wait-alert-pops-up.js
+
 test-whether-already-authenticated:
 	$(QUIET_MKDIR)mkdir -p output.run
 	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/test-whether-already-authenticated.js
 
+test1020:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/test-alert-when-please-wait-alert-pops-up.js 2>&1 | grep -i 'Warning: Alert with title' -c
+
+wait-for-elements-to-become-valid:
+	$(QUIET_MKDIR)mkdir -p output.run
+	$(QUIET_INSTRUMENTS)$(INSTRUMENTS) $(INS_PARAMS) -e UIASCRIPT src/wait-for-elements-to-become-valid.js
 
 test-stream-for-period:
 	$(QUIET_MKDIR)mkdir -p output.run
@@ -87,6 +101,9 @@ UIAutomationAddon-test: src/UIAutomationAddon.js
 
 src/UIAutomationAddon.js:
 	curl --output $@ https://gist.githubusercontent.com/TaylorMonacelli/e1eca27f7c90c4fb29f8/raw/a7e52bd757766966e92a4985e76650cdff59dfe6/UIAutomationAddon.js
+
+helpurls:
+	grep -oE http.* README.md | xargs open
 
 zip: $(zipfile)
 $(zipfile):

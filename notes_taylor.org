@@ -1,0 +1,363 @@
+* 
+
+http://stackoverflow.com/questions/3651316/handling-alert-with-uiautomation
+
+make -C /Users/demo/pdev/streambox_app_automation test-whether-already-authenticated
+    INSTRUMENTS test-whether-already-authenticated
+2014-08-15 19:52:02 +0000 Debug: target.frontMostApp().alert().cancelButton().tap()
+
+var target = UIATarget.localTarget();
+
+* Can I run an app using ios simular without having the app's source?
+
+https://www.google.com/search?q=ios+simulator+without+source+code&oq=ios+simulator+without+source&aqs=chrome.1.69i57j0.11813j0j7&sourceid=chrome&es_sm=91&ie=UTF-8
+http://apple.stackexchange.com/questions/7832/can-i-test-iphone-apps-downloaded-from-itunes-in-the-iphone-simulator
+http://stackoverflow.com/questions/947317/can-i-install-an-app-to-the-simulator-without-the-source-code
+http://stackoverflow.com/questions/8015405/is-there-a-way-to-test-ios-builds-on-simulator-without-the-source-code
+https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=%22iPhone%20Simulator%22%20without%20source
+http://stackoverflow.com/questions/11799949/is-it-possible-to-install-app-files-onto-the-iphone-simulator-without-source?lq=1
+
+find ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications | grep -F .app
+
+http://developer.apple.com/library/ios/samplecode/UICatalog/UICatalog.zip
+
+No.
+
+http://stackoverflow.com/questions/1187611/how-to-install-iphone-application-in-iphone-simulator
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator -SimulateApplication path/to/your/file/projectname.app/projectname
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator -SimulateApplication path/to/your/file/projectname.app/projectname
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents
+
+'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator' -SimulateApplication /Users/demo/Downloads/iPhone/streambox-app.3.0.14/meproiphone.app
+
+
+"posix spawn failure" Instruments Trace Error : Error Starting Recording
+
+
+"posix spawn failure"; aborting launch
+"posix spawn failure"
+aborting launch
+
+
+make -C /Users/demo/pdgh/streambox_app_automation  test-stream-for-period
+    INSTRUMENTS test-stream-for-period
+posix spawn failure; aborting launch (binary == /Users/demo/Downloads/iPhone/3.0.0_beta0/meproiphone.app/meproiphone).
+Instruments Trace Error : Error Starting Recording
+make: *** [test-stream-for-period] Error 253
+
+Compilation exited abnormally with code 2 at Sun May 25 01:44:48
+
+* navigatng the app heirarchy
+
+target.logElementTree();
+mainWindow element isvisible
+UIALogger.logWarning(Login
+
+UIAStatusBar navigationBar
+
+http://stackoverflow.com/questions/7044554/ios-uiautomation-uiaelement-isvisible-throwing-stale-response
+
+** if i'm not yet logged, in, i see this hierarchy
+
+-*- mode: compilation; default-directory: "~/pdgh/streambox_app_automation/" -*-
+Compilation started at Thu May 22 18:54:45
+
+make -C /Users/demo/pdgh/streambox_app_automation test-alert-when-please-wait-alert-pops-up
+    INSTRUMENTS test-alert-when-please-wait-alert-pops-up
+May 22 18:54:49 demos-MacBook-Pro-2.local instruments[36172] <Error>: CGImageCreateWithImageProvider: invalid image size: 640 x 640.
+May 22 18:54:49 demos-MacBook-Pro-2.local instruments[36172] <Error>: CGImageCreateWithImageProvider: invalid image size: 640 x 640.
+2014-05-23 01:54:50 +0000 logElementTree:
+UIATarget "iPhone" {{0, 0}, {320, 568}}
+elements: {
+	UIAApplication "StreamboxApp" {{0, 20}, {320, 548}}
+	elements: {
+		UIAWindow "(null)" {{0, 0}, {320, 568}}
+		elements: {
+			UIAImage "(null)" {{0, 0}, {319, 568}}
+			UIAButton "(null)" {{82.5, 64}, {155, 18}}
+			UIATextField "Title" {{20, 158}, {280, 30}}
+			UIASecureTextField "Location" {{20, 196}, {280, 30}}
+			UIAButton "Sign Up" {{20, 236}, {57, 30}}
+			UIAButton "Login" {{259, 234}, {41, 30}}
+			UIAButton "or" {{145, 274}, {30, 30}}
+			UIAButton "Log In Using Facebook >" {{71, 312}, {178, 30}}
+			UIAButton "(null)" {{41, 475}, {48, 48}}
+			UIAButton "(null)" {{247.5, 475}, {48, 48}}
+			UIAButton "How it works" {{20, 518}, {90, 30}}
+			UIAButton "Channel" {{243, 518}, {57, 30}}
+			UIAToolbar "(null)" {{0, 568}, {320, 44}}
+			elements: {
+				UIAImage "(null)" {{0, 567.5}, {320, 0.5}}
+				UIAImage "(null)" {{0, 568}, {320, 44}}
+			}
+		}
+		UIAWindow "(null)" {{0, 0}, {320, 568}}
+		elements: {
+			UIAStatusBar "(null)" {{0, 0}, {320, 20}}
+			elements: {
+				UIAElement "3 of 5 bars, signal strength" {{6, 0}, {35, 20}}
+				UIAElement "AT&T network" {{44, 0}, {29, 20}}
+				UIAElement "LTE" {{82, 0}, {17, 20}}
+				UIAElement "6:54 PM" {{137, 0}, {47, 20}}
+				UIAElement "GeofenceLocationTrackingOn" {{266, 0}, {10, 20}}
+				UIAElement "80% battery power, Charging" {{282, 0}, {33, 20}}
+			}
+		}
+	}
+}
+
+Instruments Trace Complete (Duration : 3.280426s; Output : /Users/demo/pdgh/streambox_app_automation/output.trace)
+
+Compilation finished at Thu May 22 18:54:51
+
+** if I'm already logged in, the first screen reveals this hierarchy
+
+-*- mode: compilation; default-directory: "~/pdgh/streambox_app_automation/src/" -*-
+Compilation started at Thu May 22 19:04:08
+
+make -C /Users/demo/pdgh/streambox_app_automation test-alert-when-please-wait-alert-pops-up
+    INSTRUMENTS test-alert-when-please-wait-alert-pops-up
+2014-05-23 02:04:14 +0000 Warning: Alert with title ’Please Wait’ encountered!
+May 22 19:04:19 demos-MacBook-Pro-2.local instruments[36491] <Error>: CGImageCreateWithImageProvider: invalid image size: 0 x 0.
+2014-05-23 02:04:20 +0000 logElementTree:
+UIATarget "iPhone" {{0, 0}, {568, 320}}
+elements: {
+	UIAApplication "StreamboxApp" {{0, 20}, {568, 300}}
+	elements: {
+		UIAWindow "(null)" {{0, 0}, {568, 320}}
+		elements: {
+			UIAButton "(null)" {{0, 0}, {568, 320}}
+			UIAButton "4 Advanced Help Overlay Channe" {{380, 53}, {178, 40}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Channel" {{380, 53}, {178, 40}}
+			}
+			UIAButton "4 Advanced Help Overlay Record" {{186, 169}, {140, 96}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Record" {{186, 169}, {140, 96}}
+			}
+			UIAButton "4 Advanced Help Overlay Preset" {{391.5, 171.5}, {125, 105}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Preset" {{391.5, 171.5}, {125, 105}}
+			}
+			UIAButton "4 Advanced Help Overlay Sharin" {{472, 205.5}, {96, 70}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Sharing" {{472, 205.5}, {96, 70}}
+			}
+			UIAButton "4 Advanced Help Overlay Camera" {{41.5, 222.5}, {140, 55}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Camera" {{41.5, 222.5}, {140, 55}}
+			}
+			UIAButton "4 Advanced Help Overlay Settin" {{341.5, 219.5}, {114.5, 50}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Settings" {{341.5, 219.5}, {114.5, 50}}
+			}
+			UIAButton "(null)" {{0, 0}, {568, 320}}
+			UIAButton "4 Advanced Help Overlay Channe" {{380, 53}, {178, 40}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Channel" {{380, 53}, {178, 40}}
+			}
+			UIAButton "4 Advanced Help Overlay Record" {{186, 169}, {140, 96}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Record" {{186, 169}, {140, 96}}
+			}
+			UIAButton "4 Simple Help Overlay Sharing" {{425, 184.5}, {140, 95}}
+			elements: {
+				UIAImage "4-Simple-Help-Overlay-Sharing" {{425, 184.5}, {140, 95}}
+			}
+			UIAButton "4 Advanced Help Overlay Camera" {{41.5, 222.5}, {140, 55}}
+			elements: {
+				UIAImage "4-Advanced-Help-Overlay-Camera" {{41.5, 222.5}, {140, 55}}
+			}
+			UIAButton "4 Simple Help Overlay Settings" {{310, 225}, {140, 48.5}}
+			elements: {
+				UIAImage "4-Simple-Help-Overlay-Settings" {{310, 225}, {140, 48.5}}
+			}
+			UIAButton "Streambox Watermark" {{10, 29.5}, {155, 21}}
+			UIAButton "My Channel   Active" {{480, 27}, {78, 26}}
+			UIAButton "Show stats for nerds" {{10, 58.5}, {142, 30}}
+			elements: {
+				UIAStaticText "Show stats for nerds" {{10, 64.5}, {142, 18}}
+			}
+			UIATextView "(null)" {{10, 58.5}, {350, 150}}
+			UIAButton "X" {{325, 63.5}, {30, 30}}
+			elements: {
+				UIAStaticText "X" {{335, 69.5}, {10, 18}}
+			}
+			UIAStaticText "Stand by" {{489, 61}, {69, 21}}
+			UIAStaticText "(null)" {{558, 61}, {0, 0}}
+			UIAButton "Focus Reticle" {{110, 93}, {50, 50}}
+			elements: {
+				UIAImage "Focus-Reticle" {{110, 93}, {50, 50}}
+			}
+			UIAButton "(null)" {{247, 253}, {74, 74}}
+			UIAButton "no image" {{259, 254}, {50, 50}}
+			elements: {
+				UIAImage "no-image" {{259, 254}, {50, 50}}
+			}
+			UIAButton "(null)" {{0, 264}, {568, 56}}
+			UIAButton "(null)" {{259, 265}, {50, 50}}
+			UIAButton "Stop   Record File x" {{259, 265}, {50, 50}}
+			UIAButton "Record Button   ABN" {{259, 265}, {50, 50}}
+			elements: {
+				UIAImage "Record-Button---ABN" {{259, 265}, {50, 50}}
+			}
+			UIAButton "Help Button   Neutral" {{25, 278}, {28, 28}}
+			UIAButton "Camera Button   Neutral" {{93, 277.5}, {39, 29}}
+			UIAButton "Settings Button   Neutral" {{385, 273.5}, {36, 36}}
+			UIAButton "Presets Button   Neutral" {{446, 280.5}, {36, 23.5}}
+			UIAButton "Sharing Button   Neutral" {{507, 279.5}, {36, 24.5}}
+			UIAButton "Flash   Off" {{20, 283}, {32, 32}}
+			UIAButton "Focus Lock   Neutral" {{72, 283}, {32, 32}}
+			UIAButton "Camera Switch   Neutral" {{124, 283}, {32, 32}}
+			UIAButton "AWB Button   On" {{176, 290}, {32, 18}}
+			UIAButton "Share Button   Email   Active" {{412, 283}, {32, 32}}
+			UIAButton "Share Button   Twitter   Activ" {{464, 283}, {32, 32}}
+			UIAButton "Share Button   Facebook   Acti" {{516, 283}, {32, 32}}
+		}
+		UIAWindow "(null)" {{0, -248}, {320, 568}}
+		elements: {
+			UIAStatusBar "(null)" {{0, 0}, {568, 20}}
+			elements: {
+				UIAElement "3 of 5 bars, signal strength" {{6, 0}, {35, 20}}
+				UIAElement "AT&T network" {{44, 0}, {29, 20}}
+				UIAElement "LTE" {{82, 0}, {17, 20}}
+				UIAElement "7:04 PM" {{261, 0}, {47, 20}}
+				UIAElement "StandardLocationTrackingOn" {{515, 0}, {9, 20}}
+				UIAElement "86% battery power, Charging" {{530, 0}, {33, 20}}
+			}
+		}
+	}
+}
+
+Instruments Trace Complete (Duration : 12.036310s; Output : /Users/demo/pdgh/streambox_app_automation/output.trace)
+
+Compilation finished at Thu May 22 19:04:24
+
+* 
+
+http://stackoverflow.com/questions/10712673/ios-uiautomation-reading-the-title-of-the-navigationbar
+
+How do I check against the value of the title of the navigationBar in my app, using UIAutomation javascript? I've tried all sorts of things, like
+
+target.frontMostApp().navigationBar().title
+
+target.frontMostApp().navigationBar().name
+
+target.frontMostApp().navigationBar().value
+
+And a few others, and none of them work.
+
+
+
+target.frontMostApp().navigationBar().name()
+
+* 
+
+http://goo.gl/6qVj4r
+checkIsValid versus isvisible
+
+
+
+
+checkIsValid
+Returns the specified element’s current validity status.
+
+(Boolean) checkIsValid()
+
+Use this method to determine whether the user interface element
+represented by the specified UIAElement currently exists. You should use
+checkIsValid, for example, if you’re referencing an element after having
+performed some action that may have changed the UI state of that element
+in some way. This requires a call to the underlying Accessibility
+framework to ensure the validity of the result.
+
+
+
+isVisible
+Determines whether the specified element is visible on the screen.
+
+(Number) isVisible()
+Return Value
+
+Returns 1 if the user interface element represented by the specified
+element is visible on screen, 0 if not. If the status is not available,
+it returns null.
+
+
+
+
+After checking whether element is valid then check whether its visible:
+
+
+
+
+
+Try to check if an element you are trying to manipulate isValid or/and
+isVisible before calling the scrollToVisible()
+
+   var cellToScroll = target.frontMostApp().mainWindow().scrollViews()[0].tableViews()[0].cells()[3];
+
+   if ( cellToScroll.checkIsValid() )
+    {
+        if (!cellToScroll.isVisible() )
+        {
+             cellToScroll.scrollToVisible();
+        }
+     // do other actions with object
+    }
+    else
+    {
+        UIALogger.logMessage("object is invalid");
+    }
+
+Also Sometimes recorder captures elements that are not visible. For
+example you have 2 views. View1 and View2. View1 has
+scrollView>table>cells. View2 has some nonAccessible elements. View2 is
+displayed over the
+view1. http://stackoverflow.com/questions/9707795/scrolltovisible-not-working-in-while-scrolling-a-tableview-in-ios-ui-automation
+
+* 
+
+/*
+http://cocoamanifest.net/articles/2011/07/ui-automation-part-2-assertions-and-imports.html
+UIATarget frontMostApp list controls logElementTree
+UIAAlert UIATarget.onAlert function
+*/
+
+UIATarget.onAlert = function onAlert(alert) {
+    var title = alert.name();
+    UIALogger.logWarning("Alert with title ’" + title + "’ encountered!");
+    return false; // use default handler
+}
+
+var target = UIATarget.localTarget();
+// UIATarget.localTarget().delay(3.0);
+var app = target.frontMostApp();
+var window = app.mainWindow();
+target.logElementTree();
+
+To ensure that alerts don't interfere with testing, the Automation
+instrument also implements a simple default alert handler. If your
+script’s alert handler returns false, this default handler attempts to
+dismiss the alert by tapping the cancel button, if it exists; otherwise,
+it taps the default button.
+
+https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/UIAutomationRef.pdf
+
+* 
+
+The UIATarget is your primary portal into the application running on the
+device or simulator. It acts as a sort of proxy for the user of the
+application and is the object you interact with when you want to perform
+operations on the device such as fiddling with volume controls, shaking,
+or performing user gestures.
+
+The application object (a UIAApplication instance), gives you access to
+the top-level structure of your application for things like the
+
++ navigation bar
++ tab bars
++ the main window
+
+-- http://alexvollmer.com/posts/2010/07/03/working-with-uiautomation
+

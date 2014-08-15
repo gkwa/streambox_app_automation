@@ -11,6 +11,7 @@
   - ['make pretty' gives error](#make-pretty-gives-error)
   - [I get error: Failed to start Instruments daemon for 'iOS' on 'iPhone (v7.1.1)' (The service is invalid.)](#i-get-error-failed-to-start-instruments-daemon-for-ios-on-iphone-v711-the-service-is-invalid)
   - [How to handle error: 2014-08-14 18:23:34 +0000 Fail: Could not start script, target application is not frontmost.](#how-to-handle-error-2014-08-14-182334-0000-fail-could-not-start-script-target-application-is-not-frontmost)
+  - [Is it possible to install .app files onto the iPhone simulator without source](#is-it-possible-to-install-app-files-onto-the-iphone-simulator-without-source)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -155,7 +156,6 @@ Is js-beautifier installed? https://github.com/einars/js-beautify
 ```sh
 brew install npm
 npm -g install js-beautify
-npm install js-beautify
 ```
 Is doctoc installed?
 ```sh
@@ -195,4 +195,32 @@ How to handle error: 2014-08-14 18:23:34 +0000 Fail: Could not start script, tar
 2014-08-14 18:23:34 +0000 Fail: Could not start script, target application is not frontmost.
 Instruments Trace Complete (Duration : 13.163401s; Output : /Users/Administrator/pdev/streambox_app_automation/output.trace)
     INSTRUMENTS testmain
+```
+
+Is it possible to install .app files onto the iPhone simulator without source
+-----------------------------------------------------------------------------
+If someone whoe does have the source compiles it, runs it in the simulator in order to make it IOS Simulator friendly and then zips up the version that was compiled for the simulator and then sends you that compiled-for-simulator version, then you can unzip and copy that to your `~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications` folder and run that the app in the simulator.
+
+But if you only have the app and the app was compiled for the IOS device instead of being compiled for the simulator, then you can't run the app in the simulator.
+
+http://apple.stackexchange.com/questions/7832/can-i-test-iphone-apps-downloaded-from-itunes-in-the-iphone-simulator
+http://stackoverflow.com/questions/947317/can-i-install-an-app-to-the-simulator-without-the-source-code
+http://stackoverflow.com/questions/8015405/is-there-a-way-to-test-ios-builds-on-simulator-without-the-source-code
+https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=%22iPhone%20Simulator%22%20without%20source
+http://stackoverflow.com/questions/11799949/is-it-possible-to-install-app-files-onto-the-iphone-simulator-without-source?lq=1
+
+
+Notes/logs/failed attempts
+```sh
+find ~/Library/Application\ Support/iPhone\ Simulator/7.1/Applications | grep -F .app
+```
+
+```sh
+# doesn't work
+'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator' -SimulateApplication /Users/demo/Downloads/iPhone/streambox-app.3.0.14/meproiphone.app
+
+# simulator doesn't give help usage help, all of these just open the simulator and don't provide help
+'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator' --help
+'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator' -help
+'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator' -?
 ```
