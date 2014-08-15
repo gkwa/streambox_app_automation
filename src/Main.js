@@ -85,7 +85,9 @@ target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Logout"].
 //===================================================================
 // Testing the login with inValid credentials PASS/Success
 var result3 = testLoginWithInValidCredentialsPass(invalidUserName, invalidPassword);
-if (result3 == true) {
+if (result3 == false) {
+    UIALogger.logFail("Test failed");
+} else {
     var alert = "Incorrect login/password";
     UIATarget.onAlert = function onAlert(alert) {
         UIALogger.logMessage("ghjjkl");
@@ -102,8 +104,6 @@ if (result3 == true) {
     }
 
     UIALogger.logPass("Test passed succesfully");
-} else {
-    UIALogger.logFail("Test failed");
 }
 
 //=================================================================
